@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Graph.Designer.Structure;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,40 +9,99 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Graph.Designer.Forms
 {
     public partial class GraphDrawing : Form
     {
-        public GraphDrawing()
+        List<Graphs> Graph;
+        List<RoundButton> Buttons;
+        public GraphDrawing(List<Graphs> _graphs)
         {
             InitializeComponent();
+            this.Graph = _graphs;
+            this.Buttons = new List<RoundButton>();
         }
 
         private void GraphDrawing_Load(object sender, EventArgs e)
         {
-            Label Label = new Label();
-            Label.Location = new System.Drawing.Point(50, 50);
-            Label.Width = 45;
-            Label.Height = 30;
-            Label.Font = new Font(Label.Font.FontFamily, 14);
-            Label.Name = "lblTest";
-            Label.Text = "123";
-            this.Controls.Add(Label);
+
+            int x = 130;
+            int y = 110;
+            int spaces = 0;
+            for (int i = 0; i < Graph.Count; i++)
+            {
+                RoundButton roundButton = new RoundButton();
+                roundButton.Location = new Point(x, y);
+                roundButton.Width = 52;
+                roundButton.Height = 54;
+                roundButton.Name = Graph[i].Node.ToString();
+                roundButton.Font = new Font("Arial", 12, FontStyle.Bold);
+                roundButton.Text = Graph[i].Node.ToString();
+                this.Controls.Add(roundButton);
+                ControlExtension.Draggable(roundButton, true);
+                Graph[i].PositionX = x;
+                Graph[i].PositionY = y;
+                this.Buttons.Add(roundButton);
+                roundButton.LocationChanged += new EventHandler(button1_Move);
+                x += 150;
+                spaces++;
+                if (spaces == 3)
+                {
+                    y += 100;
+                    x = 130;
+                    spaces = 0;
+                }
+            }
+        }
+
+        private void button1_Move(object sender, EventArgs e)
+        {
+            Button cb = (Button)sender;
+            string strName = cb.AccessibleName;
+            Graphs graph = Graph.Find(data => data.Node == int.Parse(cb.Name));
+            graph.PositionX = cb.Bounds.X;
+            graph.PositionY = cb.Bounds.Y;
+            this.Invalidate();
         }
 
         private void GraphDrawing_Paint(object sender, PaintEventArgs e)
         {
-            var lbl = this.Controls.Find("lblTest", true); // find label with name
-
-            foreach (var item in lbl)
-            // there can be multiple lblTest with same name so I used foreach (this is optional btw you can remove it)
+            for (int i = 0; i < Graph.Count; i++)
             {
-                Label tempLabel = item as Label;
-                Pen myPen = new Pen(Color.Black, 4);
-                e.Graphics.DrawEllipse(myPen, new Rectangle(tempLabel.Location.X - (tempLabel.Width / 2),
-                tempLabel.Location.Y - (tempLabel.Height / 2), tempLabel.Width+40, tempLabel.Height+40));
-                myPen.Dispose();
+                 DrawCurve(Graph[i], e);
+            }
+        }
+        private void DrawCurve(Graphs NodeA,PaintEventArgs e)
+        {
+           
+            int NodeApositionX = NodeA.PositionX;
+            int NodeApositionY = NodeA.PositionY;
+            for (int i = 0; i < NodeA.Edges.Count; i++)
+            {
+                if (NodeA.Node == NodeA.Edges[i])
+                {
+                    Rectangle rect = new Rectangle(NodeA.PositionX + 5, NodeA.PositionY -5, 40, 90);
+                    e.Graphics.DrawArc(new Pen(new SolidBrush(Color.Black), 3), rect, -20, -150);
+                }
+                else
+                {
+                    Graphs nodeB = Graph.Find(data => data.Node == NodeA.Edges[i]);
+                    int NodeBpositionX = nodeB.PositionX;
+                    int NodeBpositionY = nodeB.PositionY;
+                    Pen pen = new Pen(Color.Black);
+                    e.Graphics.DrawLine(pen, new Point(NodeA.PositionX + 40, NodeA.PositionY + 30), new Point(NodeBpositionX + 40, NodeBpositionY + 30));
+                }
+                
             }
         }
     }
 }
+
+//Point[] points = {
+//        new Point(170, 140),
+//        new Point(200, 50),
+//        new Point(300,30),
+//        new Point(400,30),
+//        new Point(475,140)
+//       };

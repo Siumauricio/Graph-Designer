@@ -35,7 +35,9 @@ namespace Graph.Designer.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(547, 444);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(1062, 569);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GraphDrawing";
             this.Text = "GraphDrawing";
             this.Load += new System.EventHandler(this.GraphDrawing_Load);
@@ -45,5 +47,7 @@ namespace Graph.Designer.Forms
         }
 
         #endregion
+
+        private System.Windows.Forms.VScrollBar vScrollBar1;
     }
 }

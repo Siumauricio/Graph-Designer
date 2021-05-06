@@ -5,7 +5,6 @@ C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\bin\Debug\net5.0-windo
 C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\bin\Debug\net5.0-windows\Graph.Designer.dll
 C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\bin\Debug\net5.0-windows\ref\Graph.Designer.dll
 C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\bin\Debug\net5.0-windows\Graph.Designer.pdb
-C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windows\Graph.Designer.csprojAssemblyReference.cache
 C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windows\Graph.Designer.Forms.GraphDrawing.resources
 C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windows\Graph.Designer.csproj.GenerateResource.cache
 C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windows\Graph.Designer.GeneratedMSBuildEditorConfig.editorconfig
@@ -17,3 +16,9 @@ C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windo
 C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windows\Graph.Designer.pdb
 C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windows\Graph.Designer.genruntimeconfig.cache
 C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windows\Graph.Designer.Forms.PrincipalForm.resources
+C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windows\Graph.Designer.csprojAssemblyReference.cache
+C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\bin\Debug\net5.0-windows\Control.Draggable.dll
+C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\obj\Debug\net5.0-windows\Graph.Designer.csproj.CopyComplete
+C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\bin\Debug\net5.0-windows\Microsoft.Msagl.dll
+C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\bin\Debug\net5.0-windows\Microsoft.Msagl.Drawing.dll
+C:\Users\carlo\source\repos\Graph.Designer\Graph.Designer\bin\Debug\net5.0-windows\Microsoft.Msagl.GraphViewerGdi.dll

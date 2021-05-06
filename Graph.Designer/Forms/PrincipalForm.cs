@@ -16,21 +16,21 @@ namespace Graph.Designer.Forms
         public PrincipalForm()
         {
             InitializeComponent();
-           
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
         }
         private void button1_Click(object sender, EventArgs e)
         {
             this.Graph = new List<Graphs>();
-            addVertex(textBox1.Text);
-            addEdges(textBox2.Text);
-            GraphDrawing graphDrawing = new GraphDrawing();
+            AddVertex(textBox1.Text);
+            AddEdges(textBox2.Text);
+            GraphDrawing graphDrawing = new GraphDrawing(this.Graph);
             graphDrawing.Show();
         }
-        private void addVertex(string textbox)
+        private void AddVertex(string textbox)
         {
             string vertex = textbox.Substring(1, textbox.Length - 2);
             var vertex_Array = vertex.Split(",").ToList();
@@ -44,7 +44,7 @@ namespace Graph.Designer.Forms
                 Graph.Add(data);
             }
         }
-        private void addEdges(string textbox)
+        private void AddEdges(string textbox)
         {
             string edges = textbox.Substring(1, textbox.Length - 2);
             var edges_Array = edges.Split(".").ToList();
@@ -55,9 +55,11 @@ namespace Graph.Designer.Forms
                 Graphs INode = Graph.Find(data => data.Node == int.Parse(list[0])); //Search Node for add Edges.
                 INode.Edges.Add(int.Parse(list[1]));
             }
-         
         }
 
-      
+        private void button1_Move(object sender, EventArgs e)
+        {
+
+        }
     }
 }

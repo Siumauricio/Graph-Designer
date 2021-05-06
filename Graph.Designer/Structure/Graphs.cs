@@ -11,5 +11,7 @@ namespace Graph.Designer.Structure
         public int Node { get; set; }
 
         public List<int> Edges = new List<int>();
+        public int PositionX { get; set; }
+        public int PositionY { get; set; }
     }
 }
