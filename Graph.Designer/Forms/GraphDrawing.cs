@@ -15,17 +15,19 @@ namespace Graph.Designer.Forms
     public partial class GraphDrawing : Form
     {
         List<Graphs> Graph;
-        List<RoundButton> Buttons;
         public GraphDrawing(List<Graphs> _graphs)
         {
             InitializeComponent();
             this.Graph = _graphs;
-            this.Buttons = new List<RoundButton>();
         }
 
         private void GraphDrawing_Load(object sender, EventArgs e)
         {
-
+            Paint_Graph();
+            SetGradeGraph();
+        }
+        private void Paint_Graph()
+        {
             int x = 130;
             int y = 110;
             int spaces = 0;
@@ -38,12 +40,11 @@ namespace Graph.Designer.Forms
                 roundButton.Name = Graph[i].Node.ToString();
                 roundButton.Font = new Font("Arial", 12, FontStyle.Bold);
                 roundButton.Text = Graph[i].Node.ToString();
+                roundButton.LocationChanged += new EventHandler(RountButton_Move);
                 this.Controls.Add(roundButton);
                 ControlExtension.Draggable(roundButton, true);
                 Graph[i].PositionX = x;
                 Graph[i].PositionY = y;
-                this.Buttons.Add(roundButton);
-                roundButton.LocationChanged += new EventHandler(button1_Move);
                 x += 150;
                 spaces++;
                 if (spaces == 3)
@@ -54,8 +55,19 @@ namespace Graph.Designer.Forms
                 }
             }
         }
-
-        private void button1_Move(object sender, EventArgs e)
+        private void SetGradeGraph()
+        {
+            int gradeGraph = 0;
+            for (int i = 0; i < Graph.Count; i++)
+            {
+                if (Graph[i].Edges.Count > gradeGraph)
+                {
+                    gradeGraph = Graph[i].Edges.Count;
+                }
+            }
+            label2.Text = ""+gradeGraph;
+        }
+        private void RountButton_Move(object sender, EventArgs e)
         {
             Button cb = (Button)sender;
             string strName = cb.AccessibleName;
@@ -74,7 +86,6 @@ namespace Graph.Designer.Forms
         }
         private void DrawCurve(Graphs NodeA,PaintEventArgs e)
         {
-           
             int NodeApositionX = NodeA.PositionX;
             int NodeApositionY = NodeA.PositionY;
             for (int i = 0; i < NodeA.Edges.Count; i++)
@@ -92,16 +103,7 @@ namespace Graph.Designer.Forms
                     Pen pen = new Pen(Color.Black);
                     e.Graphics.DrawLine(pen, new Point(NodeA.PositionX + 40, NodeA.PositionY + 30), new Point(NodeBpositionX + 40, NodeBpositionY + 30));
                 }
-                
             }
         }
     }
 }
-
-//Point[] points = {
-//        new Point(170, 140),
-//        new Point(200, 50),
-//        new Point(300,30),
-//        new Point(400,30),
-//        new Point(475,140)
-//       };

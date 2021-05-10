@@ -56,10 +56,5 @@ namespace Graph.Designer.Forms
                 INode.Edges.Add(int.Parse(list[1]));
             }
         }
-
-        private void button1_Move(object sender, EventArgs e)
-        {
-
-        }
     }
 }
