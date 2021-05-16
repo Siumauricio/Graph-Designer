@@ -58,7 +58,7 @@ namespace Graph.Designer.Forms
             this.label1.Location = new System.Drawing.Point(184, 51);
             this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(207, 37);
+            this.label1.Size = new System.Drawing.Size(261, 46);
             this.label1.TabIndex = 1;
             this.label1.Text = "Graph Designer";
             // 
@@ -68,9 +68,9 @@ namespace Graph.Designer.Forms
             this.textBox1.Location = new System.Drawing.Point(221, 130);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 20);
+            this.textBox1.Size = new System.Drawing.Size(179, 23);
             this.textBox1.TabIndex = 2;
-            this.textBox1.Text = "{1,2,3,4,5,6,7,8,9}";
+            this.textBox1.Text = "{1,2,3,4,5}";
             // 
             // textBox2
             // 
@@ -78,9 +78,9 @@ namespace Graph.Designer.Forms
             this.textBox2.Location = new System.Drawing.Point(221, 171);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(179, 20);
+            this.textBox2.Size = new System.Drawing.Size(179, 23);
             this.textBox2.TabIndex = 3;
-            this.textBox2.Text = "{(1,1).(1,3).(1,2).(1,4).(2,1).(4,1)}";
+            this.textBox2.Text = "{(1,1).(1,3).(3,2).(1,4).(4,3).(4,5)}";
             // 
             // label2
             // 
@@ -89,7 +89,7 @@ namespace Graph.Designer.Forms
             this.label2.Location = new System.Drawing.Point(147, 130);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(61, 19);
+            this.label2.Size = new System.Drawing.Size(75, 24);
             this.label2.TabIndex = 4;
             this.label2.Text = "Vertice";
             // 
@@ -100,20 +100,20 @@ namespace Graph.Designer.Forms
             this.label3.Location = new System.Drawing.Point(146, 170);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(62, 19);
+            this.label3.Size = new System.Drawing.Size(76, 24);
             this.label3.TabIndex = 5;
             this.label3.Text = "Aristas";
             // 
             // PrincipalForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(577, 398);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.Name = "PrincipalForm";
