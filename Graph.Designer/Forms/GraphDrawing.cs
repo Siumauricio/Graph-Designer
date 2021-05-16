@@ -21,6 +21,7 @@ namespace Graph.Designer.Forms
         List<int> Path;
         int drawOption = 0;
         Pen penPath;
+        int[,] table;
 
         public GraphDrawing(List<Graphs> _graphs)
         {
@@ -36,7 +37,8 @@ namespace Graph.Designer.Forms
             SumGradeGraph();
             MinusGradeGraph();
             ListEdges();
-            ConvertirAGrafo();
+            ConvertToGraph();
+            CyclicFunction();
         }
 
         private void ListEdges()
@@ -135,7 +137,8 @@ namespace Graph.Designer.Forms
             this.penPath = new Pen(Color.Blue);
             this.penPath.Width = 3.0F;
 
-            switch (drawOption) {
+            switch (drawOption)
+            {
                 case 1:
                     if (Path.Count > 1)
                     {
@@ -144,16 +147,16 @@ namespace Graph.Designer.Forms
                             if (i == this.Path.Count() - 1) { break; }
                             for (int j = 0; j < this.Graph.Count(); j++)
                             {
-                            
-                                    if (this.Graph[j].Node == this.Path[i])
-                                    {
-                                        Graphs nodeB = Graph.Find(data => data.Node == this.Path[i + 1]);
-                                        int NodeBpositionX = nodeB.PositionX;
-                                        int NodeBpositionY = nodeB.PositionY;
-                                        e.Graphics.DrawLine(penPath, new Point(this.Graph[j].PositionX + 40, this.Graph[j].PositionY + 30), new Point(NodeBpositionX + 40, NodeBpositionY + 30));
-                                        break;
-                                    }
-                               
+
+                                if (this.Graph[j].Node == this.Path[i])
+                                {
+                                    Graphs nodeB = Graph.Find(data => data.Node == this.Path[i + 1]);
+                                    int NodeBpositionX = nodeB.PositionX;
+                                    int NodeBpositionY = nodeB.PositionY;
+                                    e.Graphics.DrawLine(penPath, new Point(this.Graph[j].PositionX + 40, this.Graph[j].PositionY + 30), new Point(NodeBpositionX + 40, NodeBpositionY + 30));
+                                    break;
+                                }
+
                             }
 
                         }
@@ -201,94 +204,124 @@ namespace Graph.Designer.Forms
 
         private void btEncontrar_Click(object sender, EventArgs e)
         {
+            if (this.lst1.SelectedItem == null || this.lst2.SelectedItem == null)
+            {
+                MessageBox.Show("Favor seleccione un inicio y un final correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             int startVertex = int.Parse(this.lst1.SelectedItem.ToString());
             int endVertex = int.Parse(this.lst2.SelectedItem.ToString());
-            this.Path=new List<int>();
-            int[,] table = new int[Graph.Count(), 4];
-/////////////////////
+            if (startVertex == endVertex)
+            {
+                MessageBox.Show("Favor seleccione dos vertices distintos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!HasItEdges(startVertex) || !HasItEdges(endVertex))
+            {
+                MessageBox.Show("No es posible crear una ruta entre los vertices", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            this.Path = new List<int>();
+            table = new int[Graph.Count(), 4];
+            LoadTable(startVertex);
+            FindPath();
+            LoadPath(startVertex, endVertex);
+            this.drawOption = 1;
+            Invalidate();
+        }
+
+
+        private void LoadTable(int startVertex)
+        {
+
             for (int i = 0; i < this.GraphAlgorithm.Count(); i++)
             {
                 table[i, 0] = 0; //visitado
                 table[i, 1] = int.MaxValue;  //distancia
                 table[i, 2] = 0;  //padre
                 table[i, 3] = Graph[i].Node; //el nodo
-                if (this.GraphAlgorithm[i].Node == startVertex) {
+                if (this.GraphAlgorithm[i].Node == startVertex)
+                {
                     table[GetIndex(this.GraphAlgorithm[i].Node), 1] = 0;
                 }
             }
-//////////////////////////
+
+        }
+
+        private void FindPath()
+        {
             for (int i = 0; i < this.GraphAlgorithm.Count(); i++)
             {
                 for (int j = 0; j < this.GraphAlgorithm.Count(); j++)
                 {
-                    if (table[j, 0] == 0 && table[j, 1] == i) {
+                    if (table[j, 0] == 0 && table[j, 1] == i)
+                    {
                         table[j, 0] = 1;
                         for (int k = 0; k < this.GraphAlgorithm.Count(); k++)
                         {
-                            if (IsAdyacent(j,k)==1) {
+                            if (IsAdyacent(j, k) == 1)
+                            {
                                 if (table[k, 1] == int.MaxValue)
                                 {
                                     table[k, 1] = i + 1;
                                     table[k, 2] = this.GraphAlgorithm[j].Node;
                                 }
-
                             }
-                            
                         }
                     }
-
                 }
-
             }
+        }
+
+
+        private void LoadPath(int startVertex, int endVertex)
+        {
             int nodo = endVertex;
-            while (nodo != startVertex) {
+            while (nodo != startVertex)
+            {
                 Path.Add(nodo);
                 nodo = table[GetIndex(nodo), 2];
             }
             Path.Add(startVertex);
             Path.Reverse();
-
-            this.drawOption = 1;
-            Invalidate();
-            /////////////////////
-           // for (int i = 0; i < Path.Count; i++)
-           // {
-             //   MessageBox.Show(Path[i].ToString());
-           // }
         }
-
-
-        private int GetIndex(int vertex) {
+        private int GetIndex(int vertex)
+        {
             for (int i = 0; i < this.GraphAlgorithm.Count(); i++)
             {
-                if (this.GraphAlgorithm[i].Node == vertex) {
+                if (this.GraphAlgorithm[i].Node == vertex)
+                {
                     return i;
                 }
             }
-            return - 1;
+            return -1;
         }
 
-        private int IsAdyacent(int vertexIndex, int edgeIndex) {
+        private int IsAdyacent(int vertexIndex, int edgeIndex)
+        {
             int vertex = this.GraphAlgorithm[vertexIndex].Node;
             int edge = this.GraphAlgorithm[edgeIndex].Node;
 
             for (int i = 0; i < GraphAlgorithm.Count(); i++)
             {
-                if (this.GraphAlgorithm[i].Node == vertex) {
+                if (this.GraphAlgorithm[i].Node == vertex)
+                {
                     for (int j = 0; j < this.GraphAlgorithm[i].Edges.Count; j++)
                     {
-                        if (this.GraphAlgorithm[i].Edges[j] == edge) {
+                        if (this.GraphAlgorithm[i].Edges[j] == edge)
+                        {
                             return 1;
                         }
                     }
 
                 }
-         
+
             }
             return 0;
         }
 
-        private void ConvertirAGrafo()
+        private void ConvertToGraph()
         {
             for (int i = 0; i < GraphAlgorithm.Count; i++)
             {
@@ -308,8 +341,72 @@ namespace Graph.Designer.Forms
             }
         }
 
-  
+        private bool HasItEdges(int vertex)
+        {
+            for (int i = 0; i < this.GraphAlgorithm.Count; i++)
+            {
+                if (this.GraphAlgorithm[i].Node == vertex)
+                {
+                    if (this.GraphAlgorithm[i].Edges.Count > 0)
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
 
+
+        private bool IsCyclic()
+        {
+            bool[] visited = new bool[this.GraphAlgorithm.Count()];
+
+            for (int i = 0; i < this.GraphAlgorithm.Count(); i++)
+            {
+                visited[i] = false;
+            }
+            for (int i = 0; i < this.GraphAlgorithm.Count(); i++)
+            {
+                if (!visited[i])
+                {
+                    if (IsCyclicVertex(i, visited, -1))
+                    {
+                        return true;
+                    }
+                }
+            }
+            return false;
+        }
+
+        private bool IsCyclicVertex(int i, bool[] visited, int parent)
+        {
+            visited[i] = true;
+            for (int j = 0; j < this.GraphAlgorithm[i].Edges.Count(); j++)
+            {
+                if (!visited[GetIndex(this.GraphAlgorithm[i].Edges[j])])
+                {
+                    if (IsCyclicVertex(GetIndex(this.GraphAlgorithm[i].Edges[j]), visited, i))
+                    {
+                        return true;
+                    }
+                }
+                else if (GetIndex(this.GraphAlgorithm[i].Edges[j]) != parent)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void CyclicFunction()
+        {
+            if (IsCyclic())
+            {
+                this.label8.Text = "Si";
+                return;
+            }
+            this.label8.Text = "No";
+        }
 
     }
 }
@@ -334,108 +431,5 @@ namespace Graph.Designer.Forms
             }
             this.label3.Text = "" + sumGraph;
         }
-
-
-        private void MinusGradeGraph()
-        {
-            int minus = 0;
-            for (int i = 0; i < this.Graph.Count; i++)
-            {
-                if (this.Graph[i].Edges.Count > 0)
-                {
-                    minus = this.Graph[i].Edges[0];
-                    for (int j = 0; j < this.Graph[i].Edges.Count; j++)
-                    {
-                        if (this.Graph[i].Edges[j] < minus)
-                        {
-                            minus = this.Graph[i].Edges[j];
-                        }
-                    }
-
-                }
-            }
-            this.label5.Text = "" + minus;
-        }
- 
-
- for (int i = 0; i < this.Graph.Count; i++)
-            {
-               if (startVertex == endVertex) { Path.Add(startVertex);  break; }
-                for (int j = 0; j < this.Graph[i].Edges.Count; j++)
-                {
-                        if (endVertex == this.Graph[i].Edges[j])
-                        {
-                            Path.Add(this.Graph[i].Edges[j]);
-                            endVertex = this.Graph[i].Node;
-                            
-                        }
-                }
-               
-            }
  */
 
-/*
-while (true) {
-    if (startVertex == endVertex) { Path.Add(startVertex); break; }
-    for (int i = 0; i < this.Graph.Count; i++)
-    {
-        for (int j = 0; 
-            j < this.Graph[i].Edges.Count; j++)
-        {
-            if (endVertex == this.Graph[i].Edges[j])
-            {
-                Path.Add(this.Graph[i].Edges[j]);
-                endVertex = this.Graph[i].Node;
-            }
-        }
-    }
-}
-
-for (int i = 0; i < Path.Count; i++)
-{
-    MessageBox.Show(Path[i].ToString());
-}*/
-
-
-/*
-for (int i = 0; i < GraphAlgorithm.Count; i++)
-{
-    MessageBox.Show("Grafo: " + GraphAlgorithm[i].Node.ToString());
-    for (int j = 0; j < GraphAlgorithm[i].Edges.Count; j++)
-    {
-        MessageBox.Show("Arista: " + GraphAlgorithm[i].Edges[j].ToString());
-    }
-
-
-
-           while (true)
-            {
-                if (startVertex == endVertex) { break; }
-                for (int i = 0; i < this.GraphAlgorithm.Count; i++)
-                {
-                    if (this.GraphAlgorithm[i].Node == startVertex)
-                    {
-                        if (Path.Count > 1) {
-                            nonloop = Path[Path.Count() - 2];
-                        }
-                        for (int j = 0; j < this.GraphAlgorithm[i].Edges.Count; j++)
-                        {
-                            for (int k = 0; k < Path.Count(); k++)
-                            {
-                                if (this.GraphAlgorithm[i].Edges[j] != )
-                                {//debe ser diferente a todos
-                                    Path.Add(this.GraphAlgorithm[i].Edges[j]);
-                                    startVertex = this.GraphAlgorithm[i].Edges[j];
-                                    break;
-                                }
-                                if (this.GraphAlgorithm[i].Edges[j] != nonloop && this.GraphAlgorithm[i].Node != this.GraphAlgorithm[i].Edges[j]) {//debe ser diferente a todos
-                                    Path.Add(this.GraphAlgorithm[i].Edges[j]);
-                                    startVertex = this.GraphAlgorithm[i].Edges[j];
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-}*/

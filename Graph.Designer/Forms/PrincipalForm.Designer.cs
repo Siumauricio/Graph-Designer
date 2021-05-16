@@ -68,7 +68,7 @@ namespace Graph.Designer.Forms
             this.textBox1.Location = new System.Drawing.Point(221, 130);
             this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 23);
+            this.textBox1.Size = new System.Drawing.Size(264, 23);
             this.textBox1.TabIndex = 2;
             this.textBox1.Text = "{1,2,3,4,5}";
             // 
@@ -78,7 +78,7 @@ namespace Graph.Designer.Forms
             this.textBox2.Location = new System.Drawing.Point(221, 171);
             this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(179, 23);
+            this.textBox2.Size = new System.Drawing.Size(264, 23);
             this.textBox2.TabIndex = 3;
             this.textBox2.Text = "{(1,1).(1,3).(3,2).(1,4).(4,3).(4,5)}";
             // 
@@ -108,6 +108,7 @@ namespace Graph.Designer.Forms
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
             this.ClientSize = new System.Drawing.Size(577, 398);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.label3);

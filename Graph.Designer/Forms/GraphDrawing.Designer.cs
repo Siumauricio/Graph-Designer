@@ -30,22 +30,26 @@ namespace Graph.Designer.Forms
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btEncontrar = new System.Windows.Forms.Button();
+            this.lst2 = new System.Windows.Forms.ComboBox();
+            this.lst1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lst1 = new System.Windows.Forms.ComboBox();
-            this.lst2 = new System.Windows.Forms.ComboBox();
-            this.btEncontrar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.btEncontrar);
             this.panel1.Controls.Add(this.lst2);
             this.panel1.Controls.Add(this.lst1);
@@ -61,6 +65,62 @@ namespace Graph.Designer.Forms
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(241, 731);
             this.panel1.TabIndex = 0;
+            // 
+            // label8
+            // 
+            this.label8.AccessibleDescription = "S";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(170, 182);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(50, 20);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "label8";
+            // 
+            // label9
+            // 
+            this.label9.AccessibleDescription = "S";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(-1, 182);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(51, 20);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Ciclos:";
+            // 
+            // btEncontrar
+            // 
+            this.btEncontrar.Location = new System.Drawing.Point(59, 365);
+            this.btEncontrar.Name = "btEncontrar";
+            this.btEncontrar.Size = new System.Drawing.Size(94, 29);
+            this.btEncontrar.TabIndex = 9;
+            this.btEncontrar.Text = "Encontrar";
+            this.btEncontrar.UseVisualStyleBackColor = true;
+            this.btEncontrar.Click += new System.EventHandler(this.btEncontrar_Click);
+            // 
+            // lst2
+            // 
+            this.lst2.FormattingEnabled = true;
+            this.lst2.Location = new System.Drawing.Point(124, 303);
+            this.lst2.Name = "lst2";
+            this.lst2.Size = new System.Drawing.Size(70, 28);
+            this.lst2.TabIndex = 8;
+            // 
+            // lst1
+            // 
+            this.lst1.FormattingEnabled = true;
+            this.lst1.Location = new System.Drawing.Point(11, 303);
+            this.lst1.Name = "lst1";
+            this.lst1.Size = new System.Drawing.Size(70, 28);
+            this.lst1.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AccessibleDescription = "S";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(59, 259);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 20);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Solicitar camino";
             // 
             // label5
             // 
@@ -122,48 +182,13 @@ namespace Graph.Designer.Forms
             this.label1.TabIndex = 0;
             this.label1.Text = "Grado del grafo:";
             // 
-            // label7
-            // 
-            this.label7.AccessibleDescription = "S";
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(59, 212);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 20);
-            this.label7.TabIndex = 6;
-            this.label7.Text = "Solicitar camino";
-            // 
-            // lst1
-            // 
-            this.lst1.FormattingEnabled = true;
-            this.lst1.Location = new System.Drawing.Point(11, 256);
-            this.lst1.Name = "lst1";
-            this.lst1.Size = new System.Drawing.Size(70, 28);
-            this.lst1.TabIndex = 7;
-            // 
-            // lst2
-            // 
-            this.lst2.FormattingEnabled = true;
-            this.lst2.Location = new System.Drawing.Point(124, 256);
-            this.lst2.Name = "lst2";
-            this.lst2.Size = new System.Drawing.Size(70, 28);
-            this.lst2.TabIndex = 8;
-            // 
-            // btEncontrar
-            // 
-            this.btEncontrar.Location = new System.Drawing.Point(59, 318);
-            this.btEncontrar.Name = "btEncontrar";
-            this.btEncontrar.Size = new System.Drawing.Size(94, 29);
-            this.btEncontrar.TabIndex = 9;
-            this.btEncontrar.Text = "Encontrar";
-            this.btEncontrar.UseVisualStyleBackColor = true;
-            this.btEncontrar.Click += new System.EventHandler(this.btEncontrar_Click);
-            // 
             // GraphDrawing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1214, 801);
+            this.BackColor = System.Drawing.SystemColors.WindowFrame;
+            this.ClientSize = new System.Drawing.Size(1214, 864);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -191,5 +216,7 @@ namespace Graph.Designer.Forms
         private System.Windows.Forms.ComboBox lst2;
         private System.Windows.Forms.ComboBox lst1;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
