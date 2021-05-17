@@ -113,11 +113,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\carlo\\source\\repos\\Graph.Designer\\Graph.Designer\\Graph.Designer.csproj",
+      "projectUniqueName": "D:\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj",
       "projectName": "Graph.Designer",
-      "projectPath": "C:\\Users\\carlo\\source\\repos\\Graph.Designer\\Graph.Designer\\Graph.Designer.csproj",
+      "projectPath": "D:\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj",
       "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\carlo\\source\\repos\\Graph.Designer\\Graph.Designer\\obj\\",
+      "outputPath": "D:\\GitHub\\Graph-Designer\\Graph.Designer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",

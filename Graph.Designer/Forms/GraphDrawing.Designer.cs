@@ -30,20 +30,150 @@ namespace Graph.Designer.Forms
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.btEncontrar = new System.Windows.Forms.Button();
+            this.lst2 = new System.Windows.Forms.ComboBox();
+            this.lst1 = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.label8);
+            this.panel1.Controls.Add(this.label9);
+            this.panel1.Controls.Add(this.btEncontrar);
+            this.panel1.Controls.Add(this.lst2);
+            this.panel1.Controls.Add(this.lst1);
+            this.panel1.Controls.Add(this.label7);
+            this.panel1.Controls.Add(this.label5);
+            this.panel1.Controls.Add(this.label6);
+            this.panel1.Controls.Add(this.label3);
+            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Location = new System.Drawing.Point(852, 3);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(211, 549);
             this.panel1.TabIndex = 0;
+            // 
+            // label8
+            // 
+            this.label8.AccessibleDescription = "S";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(149, 136);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(38, 15);
+            this.label8.TabIndex = 11;
+            this.label8.Text = "label8";
+            // 
+            // label9
+            // 
+            this.label9.AccessibleDescription = "S";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(-1, 136);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 15);
+            this.label9.TabIndex = 10;
+            this.label9.Text = "Ciclos:";
+            // 
+            // btEncontrar
+            // 
+            this.btEncontrar.Location = new System.Drawing.Point(52, 274);
+            this.btEncontrar.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btEncontrar.Name = "btEncontrar";
+            this.btEncontrar.Size = new System.Drawing.Size(82, 22);
+            this.btEncontrar.TabIndex = 9;
+            this.btEncontrar.Text = "Encontrar";
+            this.btEncontrar.UseVisualStyleBackColor = true;
+            this.btEncontrar.Click += new System.EventHandler(this.btEncontrar_Click);
+            // 
+            // lst2
+            // 
+            this.lst2.FormattingEnabled = true;
+            this.lst2.Location = new System.Drawing.Point(108, 227);
+            this.lst2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lst2.Name = "lst2";
+            this.lst2.Size = new System.Drawing.Size(62, 23);
+            this.lst2.TabIndex = 8;
+            // 
+            // lst1
+            // 
+            this.lst1.FormattingEnabled = true;
+            this.lst1.Location = new System.Drawing.Point(10, 227);
+            this.lst1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.lst1.Name = "lst1";
+            this.lst1.Size = new System.Drawing.Size(62, 23);
+            this.lst1.TabIndex = 7;
+            // 
+            // label7
+            // 
+            this.label7.AccessibleDescription = "S";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(52, 194);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(92, 15);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Solicitar camino";
+            // 
+            // label5
+            // 
+            this.label5.AccessibleDescription = "S";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(149, 103);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(38, 15);
+            this.label5.TabIndex = 5;
+            this.label5.Text = "label5";
+            // 
+            // label6
+            // 
+            this.label6.AccessibleDescription = "S";
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(-1, 103);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(130, 15);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Grado menor del grafo:";
+            // 
+            // label3
+            // 
+            this.label3.AccessibleDescription = "S";
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(149, 67);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(38, 15);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "label3";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
+            // 
+            // label4
+            // 
+            this.label4.AccessibleDescription = "S";
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(-1, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(117, 15);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "Suma de los vertices:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(149, 32);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 15);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "label2";
             // 
             // label1
             // 
@@ -54,21 +184,13 @@ namespace Graph.Designer.Forms
             this.label1.TabIndex = 0;
             this.label1.Text = "Grado del grafo:";
             // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(106, 32);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 15);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "label2";
-            // 
             // GraphDrawing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
-            this.ClientSize = new System.Drawing.Size(1062, 569);
+            this.BackColor = System.Drawing.SystemColors.Control;
+            this.ClientSize = new System.Drawing.Size(1062, 682);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "GraphDrawing";
@@ -87,5 +209,15 @@ namespace Graph.Designer.Forms
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btEncontrar;
+        private System.Windows.Forms.ComboBox lst2;
+        private System.Windows.Forms.ComboBox lst1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
     }
 }
