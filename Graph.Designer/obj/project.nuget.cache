@@ -1,20 +1,20 @@
 {
   "version": 2,
-  "dgSpecHash": "Do81ClyNtpnN9PbND0WLsTVRdiV+Y2A9pr6ZgErKBwJWtfiPgdGUEjCNq3y7CZ/2VMtpO6b+RfrEXno7gB+1NQ==",
+  "dgSpecHash": "YKJU0WG8WRDWhpIIEvYW/5sWWKoGnPoLP1rVfQJEqFTmvTst6944G3SshBmTJl+6M2RMPJ03dq8PIiHLGGy7ew==",
   "success": true,
-  "projectFilePath": "C:\\Users\\enrik\\Documents\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj",
+  "projectFilePath": "D:\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\enrik\\.nuget\\packages\\control.draggable\\1.0.5049.269\\control.draggable.1.0.5049.269.nupkg.sha512",
-    "C:\\Users\\enrik\\.nuget\\packages\\microsoft.msagl\\1.1.3\\microsoft.msagl.1.1.3.nupkg.sha512",
-    "C:\\Users\\enrik\\.nuget\\packages\\microsoft.msagl.drawing\\1.1.3\\microsoft.msagl.drawing.1.1.3.nupkg.sha512",
-    "C:\\Users\\enrik\\.nuget\\packages\\microsoft.msagl.graphviewergdi\\1.1.3\\microsoft.msagl.graphviewergdi.1.1.3.nupkg.sha512"
+    "C:\\Users\\carlo\\.nuget\\packages\\control.draggable\\1.0.5049.269\\control.draggable.1.0.5049.269.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\microsoft.msagl\\1.1.3\\microsoft.msagl.1.1.3.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\microsoft.msagl.drawing\\1.1.3\\microsoft.msagl.drawing.1.1.3.nupkg.sha512",
+    "C:\\Users\\carlo\\.nuget\\packages\\microsoft.msagl.graphviewergdi\\1.1.3\\microsoft.msagl.graphviewergdi.1.1.3.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Control.Draggable 1.0.5049.269' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "message": "El paquete \"Control.Draggable 1.0.5049.269\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Control.Draggable",
       "targetGraphs": [
         "net5.0-windows7.0"
@@ -24,7 +24,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.Msagl 1.1.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "message": "El paquete \"Microsoft.Msagl 1.1.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Microsoft.Msagl",
       "targetGraphs": [
         "net5.0-windows7.0"
@@ -34,7 +34,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.Msagl.Drawing 1.1.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "message": "El paquete \"Microsoft.Msagl.Drawing 1.1.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Microsoft.Msagl.Drawing",
       "targetGraphs": [
         "net5.0-windows7.0"
@@ -44,7 +44,7 @@
       "code": "NU1701",
       "level": "Warning",
       "warningLevel": 1,
-      "message": "Package 'Microsoft.Msagl.GraphViewerGDI 1.1.3' was restored using '.NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8' instead of the project target framework 'net5.0-windows7.0'. This package may not be fully compatible with your project.",
+      "message": "El paquete \"Microsoft.Msagl.GraphViewerGDI 1.1.3\" se restauró con \".NETFramework,Version=v4.6.1, .NETFramework,Version=v4.6.2, .NETFramework,Version=v4.7, .NETFramework,Version=v4.7.1, .NETFramework,Version=v4.7.2, .NETFramework,Version=v4.8\" en lugar de la plataforma de destino del proyecto \"net5.0-windows7.0\". Puede que el paquete no sea totalmente compatible con el proyecto.",
       "libraryId": "Microsoft.Msagl.GraphViewerGDI",
       "targetGraphs": [
         "net5.0-windows7.0"
