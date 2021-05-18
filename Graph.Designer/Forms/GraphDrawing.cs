@@ -20,6 +20,7 @@ namespace Graph.Designer.Forms
         List<int> lstQuantity = new List<int>();
         List<int> Path;
         int drawOption = 0;
+        bool pathBack;
         Pen penPath;
         int[,] table;
 
@@ -34,10 +35,10 @@ namespace Graph.Designer.Forms
         {
             Paint_Graph();
             SetGradeGraph();
+            ConvertToGraph();
             SumGradeGraph();
             MinusGradeGraph();
             ListEdges();
-            ConvertToGraph();
             CyclicFunction();
         }
 
@@ -96,27 +97,28 @@ namespace Graph.Designer.Forms
         private void SumGradeGraph()
         {
             int sumGraph = 0;
-            for (int i = 0; i < this.Graph.Count; i++)
+            for (int i = 0; i < this.GraphAlgorithm.Count(); i++)
             {
-                sumGraph += this.Graph[i].Node;
+                for (int j = 0; j < this.GraphAlgorithm[i].Edges.Count(); j++)
+                {
+                    sumGraph++;
+                }
             }
             this.label3.Text = "" + sumGraph;
         }
 
         private void MinusGradeGraph()
         {
-            int minus = this.Graph[0].Node;
-            for (int i = 0; i < this.Graph.Count; i++)
+            int minus = this.GraphAlgorithm[0].Edges.Count();
+            for (int i = 0; i < this.GraphAlgorithm.Count(); i++)
             {
-                if (this.Graph[i].Node < minus)
+                if (this.GraphAlgorithm[i].Edges.Count() < minus)
                 {
-                    minus = this.Graph[i].Node;
+                    minus = this.GraphAlgorithm[i].Edges.Count();
                 }
             }
             this.label5.Text = "" + minus;
         }
-
-
 
         private void RountButton_Move(object sender, EventArgs e)
         {
@@ -147,7 +149,6 @@ namespace Graph.Designer.Forms
                             if (i == this.Path.Count() - 1) { break; }
                             for (int j = 0; j < this.Graph.Count(); j++)
                             {
-
                                 if (this.Graph[j].Node == this.Path[i])
                                 {
                                     Graphs nodeB = Graph.Find(data => data.Node == this.Path[i + 1]);
@@ -156,11 +157,21 @@ namespace Graph.Designer.Forms
                                     e.Graphics.DrawLine(penPath, new Point(this.Graph[j].PositionX + 40, this.Graph[j].PositionY + 30), new Point(NodeBpositionX + 40, NodeBpositionY + 30));
                                     break;
                                 }
-
                             }
-
                         }
                     }
+                    if (this.pathBack)
+                    {
+                            for (int i = 0; i < this.Graph.Count(); i++)
+                            {
+                                if (this.Graph[i].Node == this.Path[0])
+                                {
+                                    Rectangle rect = new Rectangle(this.Graph[i].PositionX + 5, this.Graph[i].PositionY - 5, 40, 90);
+                                    e.Graphics.DrawArc(this.penPath, rect, -20, -150);
+                                }
+                            }
+                    }
+
                     break;
 
                 default:
@@ -176,7 +187,7 @@ namespace Graph.Designer.Forms
             int NodeApositionY = NodeA.PositionY;
             for (int i = 0; i < NodeA.Edges.Count; i++)
             {
-                if (NodeA.Node == NodeA.Edges[i])//esto me sirve
+                if (NodeA.Node == NodeA.Edges[i])
                 {
                     Rectangle rect = new Rectangle(NodeA.PositionX + 5, NodeA.PositionY - 5, 40, 90);
                     e.Graphics.DrawArc(new Pen(new SolidBrush(Color.Black), 3), rect, -20, -150);
@@ -211,22 +222,29 @@ namespace Graph.Designer.Forms
             }
             int startVertex = int.Parse(this.lst1.SelectedItem.ToString());
             int endVertex = int.Parse(this.lst2.SelectedItem.ToString());
-            if (startVertex == endVertex)
-            {
-                MessageBox.Show("Favor seleccione dos vertices distintos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
             if (!HasItEdges(startVertex) || !HasItEdges(endVertex))
             {
                 MessageBox.Show("No es posible crear una ruta entre los vertices", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
             this.Path = new List<int>();
             table = new int[Graph.Count(), 4];
+            this.pathBack = false;
             LoadTable(startVertex);
             FindPath();
             LoadPath(startVertex, endVertex);
+            if (startVertex == endVertex)
+            {
+                if (PathBack(this.Path[0]))
+                {
+                    this.pathBack = true;
+                }
+                else
+                {
+                    MessageBox.Show("No es posible crear una ruta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             this.drawOption = 1;
             Invalidate();
         }
@@ -406,6 +424,25 @@ namespace Graph.Designer.Forms
                 return;
             }
             this.label8.Text = "No";
+        }
+
+        private bool PathBack(int vertex)
+        {
+            for (int i = 0; i < this.GraphAlgorithm.Count(); i++)
+            {
+                if (this.GraphAlgorithm[i].Node == vertex)
+                {
+                    for (int j = 0; j < this.GraphAlgorithm[i].Edges.Count(); j++)
+                    {
+                        if (this.GraphAlgorithm[i].Node == this.GraphAlgorithm[i].Edges[j])
+                        {
+                            return true;
+                        }
+                    }
+                }
+
+            }
+            return false;
         }
 
     }

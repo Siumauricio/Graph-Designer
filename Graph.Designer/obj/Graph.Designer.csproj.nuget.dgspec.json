@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj": {}
+    "C:\\Users\\enrik\\Documents\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj": {}
   },
   "projects": {
-    "D:\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj": {
+    "C:\\Users\\enrik\\Documents\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj",
+        "projectUniqueName": "C:\\Users\\enrik\\Documents\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj",
         "projectName": "Graph.Designer",
-        "projectPath": "D:\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj",
-        "packagesPath": "C:\\Users\\carlo\\.nuget\\packages\\",
-        "outputPath": "D:\\GitHub\\Graph-Designer\\Graph.Designer\\obj\\",
+        "projectPath": "C:\\Users\\enrik\\Documents\\GitHub\\Graph-Designer\\Graph.Designer\\Graph.Designer.csproj",
+        "packagesPath": "C:\\Users\\enrik\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\enrik\\Documents\\GitHub\\Graph-Designer\\Graph.Designer\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\carlo\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\enrik\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
