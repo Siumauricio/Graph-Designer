@@ -230,25 +230,23 @@ namespace Graph.Designer.Forms
             this.Path = new List<int>();
             table = new int[Graph.Count(), 4];
             this.pathBack = false;
-            LoadTable(startVertex);
-            FindPath();
-            LoadPath(startVertex, endVertex);
             if (startVertex == endVertex)
             {
-                if (PathBack(this.Path[0]))
+                if (PathBack(startVertex))//this.Path[0]
                 {
                     this.pathBack = true;
                 }
-                else
-                {
-                    MessageBox.Show("No es posible crear una ruta", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                else {
+                    MessageBox.Show("Debe seleccionar todos los vertices a recorrer", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
             }
+            LoadTable(startVertex);
+            FindPath();
+            LoadPath(startVertex, endVertex);
             this.drawOption = 1;
             Invalidate();
         }
-
 
         private void LoadTable(int startVertex)
         {
@@ -404,7 +402,7 @@ namespace Graph.Designer.Forms
                 if (!visited[GetIndex(this.GraphAlgorithm[i].Edges[j])])
                 {
                     if (IsCyclicVertex(GetIndex(this.GraphAlgorithm[i].Edges[j]), visited, i))
-                    {
+                    { 
                         return true;
                     }
                 }
@@ -443,6 +441,46 @@ namespace Graph.Designer.Forms
 
             }
             return false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (this.txtCaminoVertices.TextLength == 0) {
+                MessageBox.Show("Por favor ingrese los vertices", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            string vertex = this.txtCaminoVertices.Text;
+            var vertex_Array = vertex.Split(",").ToList();
+            if (vertex_Array.Count == 1) {
+                MessageBox.Show("Por favor ingrese mas de un vertice", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            this.Path = new List<int>();
+            for (int i = 0; i < vertex_Array.Count; i++)
+            {
+                if (vertex_Array[i]==String.Empty) {
+                    MessageBox.Show("Por favor ingrese los datos correctamente", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            for (int i = 0; i < vertex_Array.Count; i++)
+            {
+                if (i == vertex_Array.Count-1) { break; }
+                int vertexIndex = GetIndex(int.Parse(vertex_Array[i]));
+                int edgeIndex = GetIndex(int.Parse(vertex_Array[i + 1]));
+                if (vertexIndex == -1 || edgeIndex == -1) {
+                    MessageBox.Show("Por favor ingrese vertices correctos", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                if (IsAdyacent(vertexIndex, edgeIndex) !=1) {
+                    MessageBox.Show("Por favor ingrese una ruta valida", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                this.Path.Add(int.Parse(vertex_Array[i]));
+            }
+            this.Path.Add(int.Parse(vertex_Array[vertex_Array.Count-1]));
+            this.drawOption = 1;
+            Invalidate();
         }
 
     }

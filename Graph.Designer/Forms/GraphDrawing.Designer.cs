@@ -42,12 +42,18 @@ namespace Graph.Designer.Forms
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCaminoVertices = new System.Windows.Forms.TextBox();
+            this.btnGenerar = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnGenerar);
+            this.panel1.Controls.Add(this.txtCaminoVertices);
+            this.panel1.Controls.Add(this.label10);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.label9);
             this.panel1.Controls.Add(this.btEncontrar);
@@ -116,11 +122,11 @@ namespace Graph.Designer.Forms
             // 
             this.label7.AccessibleDescription = "S";
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(59, 259);
+            this.label7.Location = new System.Drawing.Point(9, 259);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 20);
+            this.label7.Size = new System.Drawing.Size(225, 20);
             this.label7.TabIndex = 6;
-            this.label7.Text = "Solicitar camino";
+            this.label7.Text = "Solicitar camino (ruta mas corta)";
             // 
             // label5
             // 
@@ -182,13 +188,40 @@ namespace Graph.Designer.Forms
             this.label1.TabIndex = 0;
             this.label1.Text = "Grado del grafo:";
             // 
+            // label10
+            // 
+            this.label10.AccessibleDescription = "S";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(34, 435);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(175, 20);
+            this.label10.TabIndex = 12;
+            this.label10.Text = "Listar camino de vertices:";
+            // 
+            // txtCaminoVertices
+            // 
+            this.txtCaminoVertices.Location = new System.Drawing.Point(8, 481);
+            this.txtCaminoVertices.Name = "txtCaminoVertices";
+            this.txtCaminoVertices.Size = new System.Drawing.Size(217, 27);
+            this.txtCaminoVertices.TabIndex = 13;
+            // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Location = new System.Drawing.Point(62, 530);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(94, 29);
+            this.btnGenerar.TabIndex = 14;
+            this.btnGenerar.Text = "Generar";
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.button1_Click);
+            // 
             // GraphDrawing
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1214, 930);
+            this.ClientSize = new System.Drawing.Size(1214, 951);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -218,5 +251,8 @@ namespace Graph.Designer.Forms
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnGenerar;
+        private System.Windows.Forms.TextBox txtCaminoVertices;
+        private System.Windows.Forms.Label label10;
     }
 }
